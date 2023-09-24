@@ -1,5 +1,7 @@
 import nltk
 import spacy
+nltk.download('stopwords')
+spacy.load('en_core_web_sm')
 import os
 import openai
 import base64
@@ -17,7 +19,7 @@ from pdfminer.high_level import extract_text
 import pandas as pd
 from selenium.webdriver.common.by import By
 from selenium import webdriver
-
+from  openAI import API_KEY
 
 st.set_page_config(page_title="Resume Analyzer",layout='wide')
 
@@ -32,7 +34,7 @@ def load_model(model_name1,model_name2):
     return nlp1,nlp2
 
 npl1=load_model('en_core_web_sm','stopwords')
-openai.api_key='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'
+openai.api_key=API_KEY
 
 @st.cache_data
 def extract_text_from_pdf(pdf_path):
